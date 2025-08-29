@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.random_quote, name='random_quote'),
     path('add/', views.add_quote, name='add_quote'),
     path('popular/', views.popular_quotes, name='popular_quotes'),
+    path('toggle/<int:quote_id>/<str:action>/', views.toggle_like_dislike, name='toggle_like_dislike'),
 ]

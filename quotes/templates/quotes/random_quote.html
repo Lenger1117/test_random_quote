@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Случайная цитата {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-body">
+      {% if quote %}
+        <p class="card-text">{{ quote.quote }}</p>
+        <p class="card-text"><small class="text-body-secondary">Источник: {{ quote.source.name }}</small></p>
+        <p class="card-text"><small class="text-body-secondary">Просмотров: {{ quote.views }}</small></p>
+        <p class="card-text">
+          <a href="{% url 'quotes:toggle_like_dislike' quote.id 'like' %}" class="btn btn-primary">Лайк</a>
+          <a href="{% url 'quotes:toggle_like_dislike' quote.id 'dislike' %}" class="btn btn-danger">Дизлайк</a>
+        </p>
+      {% else %}
+        <p>Цитаты пока не добавлены.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
