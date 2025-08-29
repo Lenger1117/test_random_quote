@@ -52,11 +52,11 @@ def popular_quotes(request):
     sort_by = request.GET.get('sort_by', 'likes')
 
     if sort_by == 'dislikes':
-        quotes = Quote.objects.all().order_by('-dislikes')
+        quotes = Quote.objects.all().order_by('-dislikes')[:10]
     elif sort_by == 'views':
-        quotes = Quote.objects.all().order_by('-views')
+        quotes = Quote.objects.all().order_by('-views')[:10]
     else:
-        quotes = Quote.objects.all().order_by('-likes')
+        quotes = Quote.objects.all().order_by('-likes')[:10]
 
     return render(request, 'quotes/popular_quotes.html', {'quotes': quotes, 'sort_by': sort_by})
 
